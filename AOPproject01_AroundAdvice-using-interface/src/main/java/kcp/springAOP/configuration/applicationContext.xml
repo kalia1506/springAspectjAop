@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Target class -->
+	<bean id="bankService"
+		class="kcp.springAOP.service.BankServiceMgmt" />
+	<!-- cfgs Advice -->
+	<bean id="PMAdvice"
+		class="kcp.springAOP.Advice.PerformanceArroundAdvice " />
+	<bean id="cacheAdvice" class="kcp.springAOP.Advice.CacheAdvice" />
+	<bean id="LoggingAdvice" class="kcp.springAOP.Advice.LoggingAdvice" />
+
+	<bean id="pfb"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+
+		<property name="target" ref="bankService" />
+		<property name="interceptorNames">
+			<list>
+				<value>PMAdvice</value>
+				<value>LoggingAdvice</value>
+				<value>cacheAdvice</value><!-- you can applied before PMAdvice its proformanceMonitoring 
+					will be execute one time -->
+			</list>
+		</property>
+		<!--  proxyInterFaces -->
+		<property name="proxyInterfaces">
+			<list>
+				<value>kcp.springAOP.service.IBankService</value>
+			</list>
+		</property>
+	</bean>
+</beans>
