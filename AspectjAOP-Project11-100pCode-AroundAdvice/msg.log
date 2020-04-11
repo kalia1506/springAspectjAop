@@ -1,0 +1,16 @@
+27-02-2020 20:04:42 WARN  LoggingAdvice:23 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:04:42 IST 2020
+27-02-2020 20:04:42 WARN  LoggingAdvice:27 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:04:42 IST 2020
+27-02-2020 20:04:42 WARN  LoggingAdvice:23 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:04:42 IST 2020
+27-02-2020 20:04:42 WARN  LoggingAdvice:27 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:04:42 IST 2020
+27-02-2020 20:06:35 WARN  LoggingAdvice:25 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:06:35 IST 2020
+27-02-2020 20:06:35 WARN  LoggingAdvice:29 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:06:35 IST 2020
+27-02-2020 20:06:35 WARN  LoggingAdvice:25 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:06:35 IST 2020
+27-02-2020 20:06:35 WARN  LoggingAdvice:29 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:06:35 IST 2020
+27-02-2020 20:10:47 WARN  LoggingAdvice:25 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:10:47 IST 2020
+27-02-2020 20:10:47 WARN  LoggingAdvice:29 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:10:47 IST 2020
+27-02-2020 20:10:47 WARN  LoggingAdvice:25 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:10:47 IST 2020
+27-02-2020 20:10:47 WARN  LoggingAdvice:29 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:10:47 IST 2020
+27-02-2020 20:13:43 WARN  LoggingAdvice:25 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:13:43 IST 2020
+27-02-2020 20:13:43 WARN  LoggingAdvice:29 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleArea(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:13:43 IST 2020
+27-02-2020 20:13:43 WARN  LoggingAdvice:25 - Entering into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:13:43 IST 2020
+27-02-2020 20:13:43 WARN  LoggingAdvice:29 - Exits into METHOD NAME:: double kcp.springAspectj.service.IDifferentAreaCalc.CircleParameter(double) and ARGUMENTS:: [10.0]at Thu Feb 27 20:13:43 IST 2020
