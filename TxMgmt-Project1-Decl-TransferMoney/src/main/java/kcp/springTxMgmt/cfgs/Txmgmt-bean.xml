@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<bean id="DataSourceTxmg"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="HKDS" />
+	</bean>
+	<bean id="NameMatchTxAttri"
+		class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+		<property name="properties">
+			<props>
+				<prop key="transferMoneyToBank">PROPAGATION_REQUIRED,timeout_5,-java.lang.IllegalAccessException
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="proxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="target" ref="bankService" />
+		<property name="transactionManager" ref="DataSourceTxmg" />
+		<property name="transactionAttributeSource"
+			ref="NameMatchTxAttri" />
+	</bean>
+</beans>

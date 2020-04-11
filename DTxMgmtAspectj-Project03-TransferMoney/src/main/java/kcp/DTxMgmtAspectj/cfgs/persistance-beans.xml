@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<bean id="oracleXADs"
+		class="com.atomikos.jdbc.AtomikosDataSourceBean">
+		<property name="uniqueResourceName" value="oracleXA" />
+		<property name="xaDataSourceClassName"
+			value="oracle.jdbc.xa.client.OracleXADataSource" />
+		<property name="xaProperties">
+			<props>
+				<prop key="databaseName">xe</prop>
+				<prop key="user">system</prop>
+				<prop key="password">kalia</prop>
+				<prop key="URL">jdbc:oracle:thin:@localhost:1521:xe</prop>
+			</props>
+		</property>
+	</bean>
+	<!--#################################################################################################### -->
+	<bean id="MySQLXADs"
+		class="com.atomikos.jdbc.AtomikosDataSourceBean">
+		<property name="uniqueResourceName" value="mysqlXA" />
+		<property name="xaDataSourceClassName"
+			value="com.mysql.cj.jdbc.MysqlXADataSource" />
+		<property name="xaProperties">
+			<props>
+				<prop key="databaseName">spring712</prop>
+				<prop key="user">root</prop>
+				<prop key="password">root</prop>
+				<prop key="URL">jdbc:mysql:///spring712</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- ######################################################################################################## -->
+	<bean id="MySQLJt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="MySQLXADs" />
+	</bean>
+	<!--###############################################################################################  -->
+	<bean id="oracleJt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="oracleXADs" />
+	</bean>
+	
+	<context:component-scan base-package="kcp.DTxMgmtAspectj.dao"/>
+</beans>

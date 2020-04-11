@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<!-- ############################################################################ -->
+	<bean id="DSTxMg"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<constructor-arg ref="HKDS"/>
+	</bean>
+	<!-- ############################################################################ -->
+	<tx:advice id="txAdvice" transaction-manager="DSTxMg">
+		<tx:attributes>
+			<tx:method name="transferMoneyToBank"
+				propagation="REQUIRED" timeout="5" read-only="false" rollback-for="java.lang.IllegalAccessException" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- ############################################################################ -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* kcp.springTxMgmt.service.BankServiceMgntImpl.*(..))"
+			id="pointcut" />
+			<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+
+</beans>
