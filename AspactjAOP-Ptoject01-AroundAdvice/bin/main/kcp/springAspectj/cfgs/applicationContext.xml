@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!-- target class configuration -->
+	<bean id="area"
+		class="kcp.springAspectj.service.DifferentAreaCalc" />
+	<!-- Advice class configuration -->
+	<bean id="pmAdvice"
+		class="kcp.springAspectj.advice.ProformanceMoniteringAdvice" />
+	<bean id="cacheAdvice"
+		class="kcp.springAspectj.advice.CachingAdvice" />
+	<bean id="logAdvice"
+		class="kcp.springAspectj.advice.LoggingAdvice" />
+	<!--AOP configuration -->
+	<aop:config>
+		<!--Pointcut -->
+		<aop:pointcut
+			expression="execution(double  kcp.springAspectj.service.DifferentAreaCalc.*(..))"
+			id="pointcut" />
+		<!--cfgs Aspectj AOP Aspect Class -->
+		<aop:aspect ref="pmAdvice">
+			<aop:around method="monitering" pointcut-ref="pointcut" />
+		</aop:aspect>
+		
+		<aop:aspect ref="cacheAdvice" order="1">
+			<!-- <aop:around method="cacheing" pointcut-ref="pointcut" /> -->
+			<!--Specific to one method -->
+			<aop:around method="cacheing"
+				pointcut="execution(double kcp.springAspectj.service.DifferentAreaCalc.CircleParameter*(..))" />
+		</aop:aspect>
+		
+		<aop:aspect ref="logAdvice">
+			<aop:around method="logging" pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
+</beans>

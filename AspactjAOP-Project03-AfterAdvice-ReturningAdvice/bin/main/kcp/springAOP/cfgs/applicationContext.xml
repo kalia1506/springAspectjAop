@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!-- cfgs Target class -->
+	<bean id="shop" class="kcp.springAOP.service.ShoppingStore" />
+	<!--cfgs Advice class -->
+	<bean id="couponAdvice"
+		class="kcp.springAOP.advice.DiscountCouponAdvice" />
+	<!--AOP cfgs -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution(double kcp.springAOP.service.ShoppingStore.*(..))"
+			id="pointcut" />
+		<aop:aspect ref="couponAdvice">
+			<aop:after-returning method="generateCoupon"
+				pointcut-ref="pointcut" returning="returnVal" />
+		</aop:aspect>
+	</aop:config>
+</beans>
