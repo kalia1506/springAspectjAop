@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!-- Cfgs target class -->
+	<bean id="approve" class="kcp.springAOP.service.BankLoanApproval" />
+	<!-- Advice Class -->
+	<bean id="auditAdvice"
+		class="kcp.springAOP.advice.BankLoanApproveAuditting">
+		<property name="managerName" value="kalu charan panda" />
+	</bean>
+	<!-- AspectjAOP cfgs -->
+	<aop:config>
+		<!-- <aop:pointcut expression="execution(* kcp.springAOP.service.BankLoanApproval.*(..))" 
+			id="pointcut" /> -->
+		<aop:pointcut
+			expression="execution(* kcp.springAOP.service.BankLoanApproval.*(..)) and args( loanId,loanType,amount)"
+			id="pointcut" />
+
+		<aop:aspect ref="auditAdvice">
+			<aop:before method="auditting" pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
